@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة نتائج الرياضيات - متوسطة عدي بن حاتم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 480px;
+            padding: 35px 25px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #38bdf8;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 16px;
+            background: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1.1rem;
+            text-align: center;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }
+        button:hover {
+            background: linear-gradient(135deg, #0369a1, #075985);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+        }
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 14px;
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+            text-align: right;
+        }
+        .result-box.success {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid #38bdf8;
+            color: #f8fafc;
+        }
+        .result-box.error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid #ef4444;
+            color: #fee2e2;
+        }
+        .result-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            text-align: center;
+            color: #38bdf8;
+        }
+        .result-box p {
+            font-size: 1.05rem;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #334155;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+        }
+        .grade-badge {
+            display: block;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 8px 12px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+        .feedback-box {
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 0.98rem;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .feedback-box.excellent {
+            background: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+            border: 1px solid #10b981;
+        }
+        .feedback-box.good {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fde047;
+            border: 1px solid #f59e0b;
+        }
+        .feedback-box.encouraging {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            border: 1px solid #6366f1;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #64748b;
+            text-align: center;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>بوابة نتائج الرياضيات</h2>
+        <p class="subtitle">متوسطة عدي بن حاتم - النظام التفاعلي</p>
+        
+        <div class="form-group">
+            <label for="nationalId">أدخل رقم الهوية الوطنية (10 أرقام):</label>
+            <input type="text" id="nationalId" maxlength="10" placeholder="مثال: 1041712022" inputmode="numeric">
+        </div>
+        
+        <button onclick="checkGrade()">عرض الدرجة</button>
+
+        <div id="resultContainer" class="result-box"></div>
+
+        <div class="footer">
+            إعداد وتنفيذ المعلم | جميع الحقوق محفوظة © ٢٠٢٦
+        </div>
+    </div>
+
+    <script>
+        // تحويل الأرقام إلى الأرقام العربية (١، ٢، ٣...)
+        function toArabicNumerals(num) {
+            const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+            return num.toString().replace(/\d/g, (digit) => arabicNumbers[digit]);
+        }
+
+        // قاعدة بيانات الطلاب
+        const studentsData = {
+            "1041722077": {
+                name: "يوسف محمد المولد",
+                score: 17,
+                total: 20
+            },
+            "1041712077": {
+                name: "محمد يوسف",
+                score: 17,
+                total: 20
+            },
+            "1041712022": {
+                name: "خالد علي",
+                score: 18,
+                total: 20
+            },
+            "1041712033": {
+                name: "فارس السلمي",
+                score: 20,
+                total: 20
+            }
+        };
+
+        function checkGrade() {
+            const idInput = document.getElementById('nationalId').value.trim();
+            const resultBox = document.getElementById('resultContainer');
+
+            if (idInput === "") {
+                resultBox.style.display = "block";
+                resultBox.className = "result-box error";
+                resultBox.innerHTML = "<h3>تنبيه</h3><p style='text-align:center;'>الرجاء إدخال رقم الهوية الوطنية.</p>";
+                return;
+            }
+
+            if (studentsData[idInput]) {
+                const student = studentsData[idInput];
+                const score = student.score;
+
+                let feedbackClass = "";
+                let feedbackTitle = "";
+                let feedbackMessage = "";
+
+                // شروط العبارات التشجيعية بناءً على الدرجة
+                if (score > 17) {
+                    feedbackClass = "excellent";
+                    feedbackTitle = "ممتاز! 🌟";
+                    feedbackMessage = "أبدعت وتألقت يا بطل! أداء استثنائي ينم عن فهم عميق لمادة الرياضيات. واصل هذا التميز والتألق فالقمة بانتظارك دائماً! 👏✨";
+                } else if (score >= 10) { 
+                    feedbackClass = "good";
+                    feedbackTitle = "أحسنت! 👍";
+                    feedbackMessage = "جهد رائع وأداء جيد جداً! أنت قريب جداً من الدرجة الكاملة، وبقليل من التركيز والمراجعة المستمرة ستكون في المقدمة دائماً! 💪🚀";
+                } else { 
+                    feedbackClass = "encouraging";
+                    feedbackTitle = "خطوة نحو النجاح! 💡";
+                    feedbackMessage = "بداية طيبة يا بطل! الرياضيات مادة ممتعة تحتاج فقط إلى التدريب والاستمرار. نحن نثق تماماً بقدراتك العالية، ومع القليل من الاجتهاد ستسجل درجات ممتازة في الاختبارات القادمة بإذن الله! 🌟🌱";
+                }
+
+                resultBox.style.display = "block";
+                resultBox.className = "result-box success";
+                resultBox.innerHTML = `
+                    <h3>تفاصيل النتيجة</h3>
+                    <div class="info-row">
+                        <span>اسم الطالب:</span>
+                        <strong>${student.name}</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>المادة:</span>
+                        <strong>مادة الرياضيات</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>الاختبار:</span>
+                        <strong>اختبار الفترة الأولى</strong>
+                    </div>
+
+                    <div class="grade-badge">
+                        الدرجة: ${toArabicNumerals(score)} من ${toArabicNumerals(student.total)}
+                    </div>
+
+                    <div class="feedback-box ${feedbackClass}">
+                        <strong>${feedbackTitle}</strong><br>
+                        ${feedbackMessage}
+                    </div>
+                `;
+            } else {
+                resultBox.style.display = "block";
+                resultBox.className = "result-box error";
+                resultBox.innerHTML = `<h3>عذراً، لم يتم العثور على النتيجة</h3><p style='text-align:center;'>رقم الهوية (${toArabicNumerals(idInput)}) غير مسجل في قوائم هذا الاختبار. تأكد من صحة الرقم المدخل.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
