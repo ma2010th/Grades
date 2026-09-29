@@ -186,7 +186,7 @@
         <p class="subtitle">متوسطة عدي بن حاتم - النظام التفاعلي</p>
         
         <div class="form-group">
-            <label for="nationalId">أدخل رقم الهوية الوطنية (10 أرقام):</label>
+            <label for="nationalId">أدخل رقم الهوية الوطنية أو الإقامة (10 أرقام):</label>
             <input type="text" id="nationalId" maxlength="10" placeholder="مثال: 1041712022" inputmode="numeric">
         </div>
         
@@ -253,7 +253,7 @@
             if (idInput === "") {
                 resultBox.style.display = "block";
                 resultBox.className = "result-box error";
-                resultBox.innerHTML = "<h3>تنبيه</h3><p style='text-align:center;'>الرجاء إدخال رقم الهوية الوطنية.</p>";
+                resultBox.innerHTML = "<h3>تنبيه</h3><p style='text-align:center;'>الرجاء إدخال رقم الهوية الوطنية أو الإقامة.</p>";
                 return;
             }
 
@@ -309,7 +309,7 @@
             } else {
                 resultBox.style.display = "block";
                 resultBox.className = "result-box error";
-                resultBox.innerHTML = `<h3>عذراً، لم يتم العثور على النتيجة</h3><p style='text-align:center;'>رقم الهوية (${toArabicNumerals(idInput)}) غير مسجل في قوائم هذا الاختبار. تأكد من صحة الرقم المدخل.</p>`;
+                resultBox.innerHTML = `<h3>عذراً، لم يتم العثور على النتيجة</h3><p style='text-align:center;'>الرقم (${toArabicNumerals(idInput)}) غير مسجل في قوائم هذا الاختبار. تأكد من صحة الرقم المدخل.</p>`;
             }
         }
     </script>
