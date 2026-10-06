@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة نتائج الطلاب - متوسطة عدي بن حاتم</title>
+    <title>نتائج الطلاب في مادة الرياضيات - متوسطة عدي بن حاتم</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -28,19 +28,19 @@
             border-radius: 28px;
             box-shadow: 0 25px 50px rgba(0, 26, 65, 0.6);
             width: 100%;
-            max-width: 650px; /* تم تكبير الصفحة لتناسب اللابتوب والايباد */
+            max-width: 650px;
             padding: 45px 35px;
             text-align: center;
         }
         h2 {
-            font-size: 2.3rem; /* تكبير الخط */
+            font-size: 2.2rem;
             margin-bottom: 8px;
             color: #001a41;
             font-weight: 900;
             text-shadow: 1px 1px 3px rgba(255, 204, 0, 0.25);
         }
         .subtitle {
-            font-size: 1.15rem; /* تكبير الخط */
+            font-size: 1.15rem;
             color: #486581;
             margin-bottom: 25px;
             font-weight: 700;
@@ -59,7 +59,7 @@
             border: 2.5px solid #cbd5e1;
             border-radius: 16px;
             color: #486581;
-            font-size: 1.1rem; /* تكبير الخط */
+            font-size: 1.05rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -80,37 +80,37 @@
             transition: all 0.3s ease;
         }
 
-        /* زر الرياضيات بلون الأصفر النصراوي */
+        /* 1. تصميم زر اختبار الفترة الأولى */
         #btnMath .icon {
-            background: rgba(255, 204, 0, 0.15);
-            color: #d4a000;
+            background: rgba(212, 160, 23, 0.12);
+            color: #b8860b;
         }
         #btnMath.active {
-            background: linear-gradient(135deg, #fff9db, #fff3bf);
-            border-color: #ffcc00;
-            color: #7a5c00;
-            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.35);
+            background: linear-gradient(135deg, #fffcf0, #fef3c7);
+            border-color: #d97706;
+            color: #92400e;
+            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
         }
         #btnMath.active .icon {
-            background: #ffcc00;
-            color: #001a41;
+            background: #d97706;
+            color: #ffffff;
             transform: scale(1.1);
         }
 
-        /* زر تيمز بلون الأزرق الملكي */
+        /* 2. تصميم زر تيمز */
         #btnTimss .icon {
-            background: rgba(0, 47, 108, 0.1);
-            color: #002f6c;
+            background: rgba(13, 148, 136, 0.12);
+            color: #0d9488;
         }
         #btnTimss.active {
-            background: linear-gradient(135deg, #e6f0ff, #cce0ff);
-            border-color: #002f6c;
-            color: #001a41;
-            box-shadow: 0 8px 20px rgba(0, 47, 108, 0.3);
+            background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+            border-color: #0d9488;
+            color: #115e59;
+            box-shadow: 0 8px 20px rgba(13, 148, 136, 0.3);
         }
         #btnTimss.active .icon {
-            background: #002f6c;
-            color: #ffcc00;
+            background: #0d9488;
+            color: #ffffff;
             transform: scale(1.1);
         }
 
@@ -122,13 +122,26 @@
             margin-bottom: 25px;
             text-align: right;
         }
+        
+        /* تنسيق عنوان تسمية حقل الإدخال ولونه التفاعلي */
         label {
             display: block;
             margin-bottom: 10px;
-            font-size: 1.1rem; /* تكبير الخط */
-            color: #001a41;
+            font-size: 1.1rem;
             font-weight: 700;
+            transition: color 0.3s ease;
         }
+        
+        /* لون النص الافتراضي (اختبار الفترة الأولى - ذهبي غامق/دافئ) */
+        .container.math-mode label {
+            color: #b45309;
+        }
+        
+        /* لون النص عند تفعيل تيمز (نفس لون أيقونة التيمز - أزرق زمردي) */
+        .container.timss-mode label {
+            color: #0d9488;
+        }
+
         input[type="text"] {
             width: 100%;
             padding: 16px 20px;
@@ -136,7 +149,7 @@
             border: 2.5px solid #cbd5e1;
             border-radius: 14px;
             color: #001a41;
-            font-size: 1.25rem; /* تكبير الخط داخل الحقل */
+            font-size: 1.25rem;
             text-align: center;
             letter-spacing: 2px;
             font-weight: 700;
@@ -148,24 +161,53 @@
             background: #ffffff;
             box-shadow: 0 0 15px rgba(255, 204, 0, 0.45);
         }
+
+        /* 3. تصميم زر عرض النتيجة المتغير بناءً على الاختبار المحدد */
         button.submit-btn {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #ffcc00, #e6b800);
-            color: #001a41;
             border: none;
             border-radius: 14px;
-            font-size: 1.25rem; /* تكبير خط الزر */
+            font-size: 1.25rem;
             font-weight: 900;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #ffffff;
         }
-        button.submit-btn:hover {
-            background: linear-gradient(135deg, #ffd633, #ffcc00);
+
+        /* لون زر عرض النتيجة عندما يكون اختبار الفترة الأولى نشطاً (ذهبي دافئ) */
+        .container.math-mode button.submit-btn {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+        }
+        .container.math-mode button.submit-btn:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.6);
+            box-shadow: 0 8px 25px rgba(217, 119, 6, 0.6);
         }
+
+        /* لون زر عرض النتيجة عندما يكون اختبار تيمز نشطاً (أزرق زمردي) */
+        .container.timss-mode button.submit-btn {
+            background: linear-gradient(135deg, #0d9488, #115e59);
+            box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+        }
+        .container.timss-mode button.submit-btn:hover {
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(13, 148, 136, 0.6);
+        }
+
+        button.submit-btn span.btn-icon {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 10px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+        }
+
         .result-box {
             margin-top: 30px;
             padding: 25px;
@@ -218,7 +260,7 @@
         .grade-badge {
             display: block;
             text-align: center;
-            font-size: 1.5rem; /* تكبير خط عرض الدرجة */
+            font-size: 1.5rem;
             font-weight: 900;
             color: #002f6c;
             background: rgba(0, 47, 108, 0.08);
@@ -253,7 +295,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* تحسين التجاوب مع الجوالات الصغيرة */
         @media (max-width: 480px) {
             .container {
                 padding: 25px 15px;
@@ -270,15 +311,16 @@
 </head>
 <body>
 
-    <div class="container">
-        <h2>بوابة نتائج الطلاب</h2>
+    <!-- افتراضياً يبدأ في وضع اختبار الفترة الأولى (math-mode) -->
+    <div class="container math-mode" id="mainContainer">
+        <h2>نتائج الطلاب في مادة الرياضيات</h2>
         <p class="subtitle">متوسطة عدي بن حاتم - النظام التفاعلي</p>
         
         <!-- أزرار اختيار نوع الاختبار -->
         <div class="exam-selector">
             <button type="button" class="exam-btn active" id="btnMath" onclick="setExamType('math')">
                 <span class="icon">📐</span>
-                <span>اختبار الرياضيات</span>
+                <span>اختبار الفترة الأولى</span>
             </button>
             <button type="button" class="exam-btn" id="btnTimss" onclick="setExamType('timss')">
                 <span class="icon">🎯</span>
@@ -287,11 +329,15 @@
         </div>
 
         <div class="form-group">
-            <label for="nationalId" id="inputLabel">أدخل رقم الهوية لاختبار الرياضيات:</label>
+            <label for="nationalId" id="inputLabel">أدخل رقم الهوية لاختبار الفترة الأولى:</label>
             <input type="text" id="nationalId" placeholder="مثال: 1234567890" inputmode="numeric">
         </div>
         
-        <button class="submit-btn" onclick="checkGrade()">عرض النتيجة</button>
+        <!-- زر عرض النتيجة بلون متغير حسب الوضع -->
+        <button class="submit-btn" onclick="checkGrade()">
+            <span class="btn-icon">🔍</span>
+            <span>عرض النتيجة</span>
+        </button>
 
         <div id="resultContainer" class="result-box"></div>
 
@@ -310,17 +356,22 @@
             const btnTimss = document.getElementById('btnTimss');
             const inputLabel = document.getElementById('inputLabel');
             const resultBox = document.getElementById('resultContainer');
+            const mainContainer = document.getElementById('mainContainer');
 
             resultBox.style.display = "none";
 
             if (type === 'math') {
                 btnMath.classList.add('active');
                 btnTimss.classList.remove('active');
-                inputLabel.innerText = "أدخل رقم الهوية لاختبار الرياضيات:";
+                inputLabel.innerText = "أدخل رقم الهوية لاختبار الفترة الأولى:";
+                mainContainer.classList.remove('timss-mode');
+                mainContainer.classList.add('math-mode');
             } else {
                 btnTimss.classList.add('active');
                 btnMath.classList.remove('active');
                 inputLabel.innerText = "أدخل رقم الهوية لاختبارات تيمز (TIMSS):";
+                mainContainer.classList.remove('math-mode');
+                mainContainer.classList.add('timss-mode');
             }
         }
 
@@ -330,7 +381,7 @@
         }
 
         const studentsData = {
-            /* الهوية التجريبية المطلوبة */
+            /* الهوية التجريبية: اختبار الفترة الأولى 18 من 20، والتيمز 7 من 10 */
             "1234567890": { name: "طالب تجريبي (معاينة)", mathScore: 18, timssScore: 7 },
 
             /* قائمة الطلاب */
@@ -483,13 +534,16 @@
                 const student = studentsData[idInput];
                 let score = null;
                 let examName = "";
+                let maxScore = 20;
 
                 if (currentExam === 'math') {
                     score = student.mathScore;
-                    examName = "اختبار الرياضيات (الفترة الأولى)";
+                    examName = "اختبار الفترة الأولى";
+                    maxScore = 20;
                 } else {
                     score = student.timssScore;
                     examName = "اختبارات تيمز الدولية (TIMSS)";
+                    maxScore = 10;
                 }
 
                 if (score === null || score === undefined) {
@@ -513,15 +567,16 @@
                     return;
                 }
 
-                let feedbackClass = "";
                 let feedbackTitle = "";
                 let feedbackMessage = "";
 
-                if (score > 14) {
+                const percentage = (score / maxScore) * 100;
+
+                if (percentage >= 75) {
                     feedbackTitle = "ممتاز! 🌟";
                     feedbackMessage = "أبدعت وتألقت يا بطل! أداء استثنائي ينم عن فهم عميق. واصل هذا التميز والتألق دائماً! 👏✨";
                     playSound('applause');
-                } else if (score > 9) {
+                } else if (percentage >= 50) {
                     feedbackTitle = "أحسنت! 👍";
                     feedbackMessage = "عمل رائع! واصل الاجتهاد والتركيز وستصل إلى أعلى المستويات. 💪🚀";
                     playSound('success');
@@ -530,6 +585,8 @@
                     feedbackMessage = "لا تقلق يا بطل، البدايات دائمًا فرصة للتعلم والتطور. أنت تمتلك القدرة على التحسن في الاختبارات القادمة! 🌟🌱";
                     playSound('encouraging');
                 }
+
+                const maxScoreArabic = maxScore === 20 ? '٢٠' : '١٠';
 
                 resultBox.style.display = "block";
                 resultBox.className = "result-box success";
@@ -545,7 +602,7 @@
                     </div>
 
                     <div class="grade-badge">
-                        الدرجة: ${toArabicNumerals(score)} من ٢٠
+                        الدرجة: ${toArabicNumerals(score)} من ${maxScoreArabic}
                     </div>
 
                     <div class="feedback-box">
