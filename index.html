@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة نتائج الرياضيات - متوسطة عدي بن حاتم</title>
+    <title>بوابة نتائج الطلاب - متوسطة عدي بن حاتم</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -13,7 +13,7 @@
             font-family: 'Tajawal', sans-serif;
         }
         body {
-            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            background: linear-gradient(135deg, #001a41, #002f6c);
             color: #102a43;
             min-height: 100vh;
             display: flex;
@@ -22,205 +22,393 @@
             padding: 20px;
         }
         .container {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.97);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(178, 190, 205, 0.4);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(16, 42, 67, 0.1);
+            border: 4px solid #ffcc00;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px rgba(0, 26, 65, 0.6);
             width: 100%;
-            max-width: 480px;
-            padding: 35px 25px;
+            max-width: 650px; /* تم تكبير الصفحة لتناسب اللابتوب والايباد */
+            padding: 45px 35px;
             text-align: center;
         }
         h2 {
-            font-size: 1.8rem;
+            font-size: 2.3rem; /* تكبير الخط */
             margin-bottom: 8px;
-            color: #0284c7;
-            font-weight: 700;
+            color: #001a41;
+            font-weight: 900;
+            text-shadow: 1px 1px 3px rgba(255, 204, 0, 0.25);
         }
         .subtitle {
-            font-size: 0.95rem;
-            color: #627d98;
+            font-size: 1.15rem; /* تكبير الخط */
+            color: #486581;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        /* تصميم أزرار اختيار نوع الاختبار */
+        .exam-selector {
+            display: flex;
+            gap: 15px;
             margin-bottom: 25px;
         }
+        .exam-btn {
+            flex: 1;
+            padding: 16px 12px;
+            background: #f8fafc;
+            border: 2.5px solid #cbd5e1;
+            border-radius: 16px;
+            color: #486581;
+            font-size: 1.1rem; /* تكبير الخط */
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .exam-btn span.icon {
+            font-size: 1.8rem;
+            padding: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        /* زر الرياضيات بلون الأصفر النصراوي */
+        #btnMath .icon {
+            background: rgba(255, 204, 0, 0.15);
+            color: #d4a000;
+        }
+        #btnMath.active {
+            background: linear-gradient(135deg, #fff9db, #fff3bf);
+            border-color: #ffcc00;
+            color: #7a5c00;
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.35);
+        }
+        #btnMath.active .icon {
+            background: #ffcc00;
+            color: #001a41;
+            transform: scale(1.1);
+        }
+
+        /* زر تيمز بلون الأزرق الملكي */
+        #btnTimss .icon {
+            background: rgba(0, 47, 108, 0.1);
+            color: #002f6c;
+        }
+        #btnTimss.active {
+            background: linear-gradient(135deg, #e6f0ff, #cce0ff);
+            border-color: #002f6c;
+            color: #001a41;
+            box-shadow: 0 8px 20px rgba(0, 47, 108, 0.3);
+        }
+        #btnTimss.active .icon {
+            background: #002f6c;
+            color: #ffcc00;
+            transform: scale(1.1);
+        }
+
+        .exam-btn:hover {
+            border-color: #001a41;
+        }
+
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: right;
         }
         label {
             display: block;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-            color: #334e68;
+            margin-bottom: 10px;
+            font-size: 1.1rem; /* تكبير الخط */
+            color: #001a41;
             font-weight: 700;
         }
         input[type="text"] {
             width: 100%;
-            padding: 14px 16px;
+            padding: 16px 20px;
             background: #f8fafc;
-            border: 2px solid #bcccdc;
-            border-radius: 12px;
-            color: #102a43;
-            font-size: 1.1rem;
+            border: 2.5px solid #cbd5e1;
+            border-radius: 14px;
+            color: #001a41;
+            font-size: 1.25rem; /* تكبير الخط داخل الحقل */
             text-align: center;
             letter-spacing: 2px;
+            font-weight: 700;
             transition: all 0.3s ease;
         }
         input[type="text"]:focus {
             outline: none;
-            border-color: #0284c7;
+            border-color: #ffcc00;
             background: #ffffff;
-            box-shadow: 0 0 10px rgba(2, 132, 199, 0.15);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.45);
         }
-        button {
+        button.submit-btn {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #0284c7, #0369a1);
-            color: white;
+            padding: 16px;
+            background: linear-gradient(135deg, #ffcc00, #e6b800);
+            color: #001a41;
             border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
+            border-radius: 14px;
+            font-size: 1.25rem; /* تكبير خط الزر */
+            font-weight: 900;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
         }
-        button:hover {
-            background: linear-gradient(135deg, #0369a1, #075985);
+        button.submit-btn:hover {
+            background: linear-gradient(135deg, #ffd633, #ffcc00);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.6);
         }
         .result-box {
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 14px;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 16px;
             display: none;
             animation: fadeIn 0.4s ease forwards;
             text-align: right;
         }
         .result-box.success {
             background: #f0fdf4;
-            border: 1px solid #86efac;
+            border: 2.5px solid #86efac;
             color: #14532d;
         }
         .result-box.error {
             background: #fef2f2;
-            border: 1px solid #fca5a5;
+            border: 2.5px solid #fca5a5;
             color: #7f1d1d;
         }
-        .result-box h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            text-align: center;
-            color: #0284c7;
+        .result-box.pending {
+            background: #fffbeb;
+            border: 2.5px solid #ffcc00;
+            color: #7a5c00;
         }
-        .result-box p {
-            font-size: 1.05rem;
-            margin: 8px 0;
-            line-height: 1.6;
+        .result-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #002f6c;
+            font-weight: 900;
+        }
+        .result-box.pending h3 {
+            color: #b38600;
         }
         .info-row {
             display: flex;
             justify-content: space-between;
             border-bottom: 1px dashed #cbd5e1;
-            padding-bottom: 6px;
-            margin-bottom: 8px;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
         }
         .info-row span {
             color: #486581;
+            font-weight: 500;
         }
         .info-row strong {
-            color: #102a43;
+            color: #001a41;
+            font-weight: 700;
         }
         .grade-badge {
             display: block;
             text-align: center;
-            font-size: 1.4rem;
+            font-size: 1.5rem; /* تكبير خط عرض الدرجة */
             font-weight: 900;
-            color: #0369a1;
-            background: rgba(2, 132, 199, 0.08);
-            padding: 8px 12px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border: 1px solid rgba(2, 132, 199, 0.2);
+            color: #002f6c;
+            background: rgba(0, 47, 108, 0.08);
+            padding: 14px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1.5px solid rgba(0, 47, 108, 0.2);
         }
         .feedback-box {
-            padding: 12px 15px;
+            margin-top: 15px;
+            padding: 12px;
             border-radius: 10px;
-            font-size: 0.98rem;
-            margin-top: 10px;
+            font-size: 1.05rem;
             text-align: center;
-            font-weight: 500;
-        }
-        .feedback-box.excellent {
-            background: #dcfce7;
-            color: #166534;
-            border: 1px solid #22c55e;
-        }
-        .feedback-box.good {
-            background: #fef9c3;
-            color: #854d0e;
-            border: 1px solid #eab308;
-        }
-        .feedback-box.encouraging {
-            background: #e0e7ff;
-            color: #3730a3;
-            border: 1px solid #6366f1;
+            line-height: 1.6;
         }
         .footer {
-            margin-top: 30px;
-            font-size: 0.9rem;
+            margin-top: 35px;
+            font-size: 1rem;
             color: #627d98;
             text-align: center;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 15px;
+            border-top: 2.5px solid #e2e8f0;
+            padding-top: 18px;
         }
         .footer span {
-            color: #0284c7;
-            font-weight: 700;
-            font-size: 0.95rem;
+            color: #002f6c;
+            font-weight: 900;
+            font-size: 1.05rem;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* تحسين التجاوب مع الجوالات الصغيرة */
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .exam-selector {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>بوابة نتائج الرياضيات</h2>
+        <h2>بوابة نتائج الطلاب</h2>
         <p class="subtitle">متوسطة عدي بن حاتم - النظام التفاعلي</p>
         
+        <!-- أزرار اختيار نوع الاختبار -->
+        <div class="exam-selector">
+            <button type="button" class="exam-btn active" id="btnMath" onclick="setExamType('math')">
+                <span class="icon">📐</span>
+                <span>اختبار الرياضيات</span>
+            </button>
+            <button type="button" class="exam-btn" id="btnTimss" onclick="setExamType('timss')">
+                <span class="icon">🎯</span>
+                <span>اختبارات تيمز (TIMSS)</span>
+            </button>
+        </div>
+
         <div class="form-group">
-            <label for="nationalId">أدخل رقم الهوية الوطنية أو الإقامة (10 أرقام):</label>
-            <input type="text" id="nationalId" maxlength="10" placeholder="مثال: 1041712022" inputmode="numeric">
+            <label for="nationalId" id="inputLabel">أدخل رقم الهوية لاختبار الرياضيات:</label>
+            <input type="text" id="nationalId" placeholder="مثال: 1234567890" inputmode="numeric">
         </div>
         
-        <button onclick="checkGrade()">عرض الدرجة</button>
+        <button class="submit-btn" onclick="checkGrade()">عرض النتيجة</button>
 
         <div id="resultContainer" class="result-box"></div>
 
         <div class="footer">
             إعداد وتنفيذ المعلم: <span>عبدالمحيي السلمي</span><br>
-            <span style="font-size: 0.75rem; color: #829ab1; font-weight: 400;">جميع الحقوق محفوظة © ٢٠٢٦</span>
+            <span style="font-size: 0.8rem; color: #829ab1; font-weight: 400;">جميع الحقوق محفوظة © ٢٠٢٦</span>
         </div>
     </div>
 
     <script>
+        let currentExam = 'math';
+
+        function setExamType(type) {
+            currentExam = type;
+            const btnMath = document.getElementById('btnMath');
+            const btnTimss = document.getElementById('btnTimss');
+            const inputLabel = document.getElementById('inputLabel');
+            const resultBox = document.getElementById('resultContainer');
+
+            resultBox.style.display = "none";
+
+            if (type === 'math') {
+                btnMath.classList.add('active');
+                btnTimss.classList.remove('active');
+                inputLabel.innerText = "أدخل رقم الهوية لاختبار الرياضيات:";
+            } else {
+                btnTimss.classList.add('active');
+                btnMath.classList.remove('active');
+                inputLabel.innerText = "أدخل رقم الهوية لاختبارات تيمز (TIMSS):";
+            }
+        }
+
         function toArabicNumerals(num) {
             const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
             return num.toString().replace(/\d/g, (digit) => arabicNumbers[digit]);
         }
 
         const studentsData = {
-            "1041722077": { name: "يوسف محمد المولد", score: 17, total: 20 },
-            "1041712077": { name: "محمد يوسف", score: 17, total: 20 },
-            "1041712022": { name: "خالد علي", score: 18, total: 20 },
-            "1041712033": { name: "فارس السلمي", score: 20, total: 20 },
-            "1041712000": { name: "حاتم السلمي", score: 19, total: 20 },
-            "1234567890": { name: "على سليم السلمي", score: 13.5, total: 20 },
-            "1234567899": { name: "هلال المطيري", score: 20, total: 20 }
+            /* الهوية التجريبية المطلوبة */
+            "1234567890": { name: "طالب تجريبي (معاينة)", mathScore: 18, timssScore: 7 },
+
+            /* قائمة الطلاب */
+            "1161364300": { name: "يوسف مديح بن عابد اليهايي", mathScore: null, timssScore: null },
+            "1161478860": { name: "مراد فوزي بن عايض الحارثي", mathScore: null, timssScore: null },
+            "1162002834": { name: "عبدالله بدر عبدالله الرشيدي", mathScore: null, timssScore: null },
+            "1162007825": { name: "محمد عبدالله صالح الغامدي", mathScore: null, timssScore: null },
+            "1162236325": { name: "الوليد خالد علي الغامدي", mathScore: null, timssScore: null },
+            "1162877284": { name: "عبدالله مازن يحي باحسن", mathScore: null, timssScore: null },
+            "1163293408": { name: "زايد سعد زايد المالكي", mathScore: null, timssScore: null },
+            "1163368523": { name: "عبدالله مسبل ابن محمد العمري", mathScore: null, timssScore: null },
+            "1163705435": { name: "مشاري احمد بن حسن الغامدي", mathScore: null, timssScore: null },
+            "1164133462": { name: "عماد بن مرعي بن سالم العمري", mathScore: null, timssScore: null },
+            "1164575357": { name: "عمر ايمن امين بالخيور", mathScore: null, timssScore: null },
+            "1165861806": { name: "سلطان عبدالعزيز صلاح الحربي", mathScore: null, timssScore: null },
+            "1168127890": { name: "محمد عبدالرحيم بن سعيد العمري", mathScore: null, timssScore: null },
+            "1172370080": { name: "عبدالله سعد احمد القرني", mathScore: null, timssScore: null },
+            "2342642200": { name: "مصطفى طيفور مصطفى محمد", mathScore: null, timssScore: null },
+            "2342791502": { name: "سعد صالح محسن باقادر", mathScore: null, timssScore: null },
+            "2359395429": { name: "سليم سعيد صالح محمد", mathScore: null, timssScore: null },
+            "2365354824": { name: "هتان شادي مروان حمدان الشاعر", mathScore: null, timssScore: null },
+            "2369119637": { name: "قصي محمود احمد النعيذي", mathScore: null, timssScore: null },
+            "2369429960": { name: "سالم يسلم سالم باخيضر", mathScore: null, timssScore: null },
+            "2370723278": { name: "يوسف معمر عمر علي ادريس", mathScore: null, timssScore: null },
+            "2372250742": { name: "عبدالله مصطفى آدم محمد", mathScore: null, timssScore: null },
+            "2383821101": { name: "مرسال باسم احمد برعي", mathScore: null, timssScore: null },
+            "1427307713": { name: "عبدالعزيز عادل مصباح بيبي", mathScore: null, timssScore: null },
+            "1163846411": { name: "عمر رحاب محي الدين النعماني", mathScore: null, timssScore: null },
+            "1164001941": { name: "أوس احمد عبدالرحيم عبده", mathScore: null, timssScore: null },
+            "1164113191": { name: "راشد محمد ابراهيم حكمي", mathScore: null, timssScore: null },
+            "1164132803": { name: "فيصل علي وصل المحياوي", mathScore: null, timssScore: null },
+            "1164470195": { name: "خالد علي احمد الهجيني", mathScore: null, timssScore: null },
+            "1164647370": { name: "محمود عبده ابراهيم دراج", mathScore: null, timssScore: null },
+            "1164693259": { name: "محمد علي ابوطالب هزازي", mathScore: null, timssScore: null },
+            "1164766162": { name: "باسل محمد عاطي الحربي", mathScore: null, timssScore: null },
+            "1164884890": { name: "حاتم حسن بن علي عسيري", mathScore: null, timssScore: null },
+            "1165134014": { name: "وسام أحمد مسفر العلياني", mathScore: null, timssScore: null },
+            "1165634203": { name: "محمد منير صالح الثبيتي", mathScore: null, timssScore: null },
+            "1165678366": { name: "محمد بندر عبدالرحمن عبده جياش", mathScore: null, timssScore: null },
+            "1165767672": { name: "فارس ماجد علي خليل", mathScore: null, timssScore: null },
+            "1166072460": { name: "فيصل سامي عقيل العتيبي", mathScore: null, timssScore: null },
+            "1166159770": { name: "عمر احمد محمد السالمي", mathScore: null, timssScore: null },
+            "1166518967": { name: "زياد سامي محمد المالكي", mathScore: null, timssScore: null },
+            "1166559342": { name: "يزن هتان عبدالواحد الرابغي", mathScore: null, timssScore: null },
+            "1167034295": { name: "عمر عبدالله عويضة الشيخ", mathScore: null, timssScore: null },
+            "2120392378": { name: "عبدالله خالد عبدالله محمد", mathScore: null, timssScore: null },
+            "2363878220": { name: "علي محمد غريب جمعه", mathScore: null, timssScore: null },
+            "2363909397": { name: "اياد محمد يونس طوطح", mathScore: null, timssScore: null },
+            "2364051355": { name: "احمد صلاح صالح الهيج", mathScore: null, timssScore: null },
+            "2366958771": { name: "صهيب فراس حسن كرم", mathScore: null, timssScore: null },
+            "54677": { name: "علي عبدالله محمد عيسى", mathScore: null, timssScore: null },
+            "1159662863": { name: "عبدالمحسن فهد سيف السريحي", mathScore: null, timssScore: null },
+            "1161736473": { name: "محمد جاسم محمد المولد", mathScore: null, timssScore: null },
+            "1162945776": { name: "جواد محمد علي القرني", mathScore: null, timssScore: null },
+            "1163784802": { name: "مشاري محمد عوضه ال عبود", mathScore: null, timssScore: null },
+            "1163844663": { name: "سيف رعد حمود الطويرقي", mathScore: null, timssScore: null },
+            "1164234492": { name: "ريان علي احمد مباركي", mathScore: null, timssScore: null },
+            "1164370452": { name: "ريان وائل عائض المالكي", mathScore: null, timssScore: null },
+            "1164505701": { name: "مشاري عايد فهيد المطيري", mathScore: null, timssScore: null },
+            "1164530014": { name: "مؤيد رياض سعيد الغامدي", mathScore: null, timssScore: null },
+            "1164543330": { name: "عمر خليل علي السيد", mathScore: null, timssScore: null },
+            "1165192822": { name: "عمر علاء راضي الفارسي", mathScore: null, timssScore: null },
+            "1165270768": { name: "بدر سلطان مبارك العنزي", mathScore: null, timssScore: null },
+            "1165280411": { name: "صالح رايد امين كردي", mathScore: null, timssScore: null },
+            "1165288687": { name: "مشاري سامي عوده الجهني", mathScore: null, timssScore: null },
+            "1165300219": { name: "حمزة ريان يوسف الخوتاني", mathScore: null, timssScore: null },
+            "1165492008": { name: "زياد مطرب بن جعيشن الشمري", mathScore: null, timssScore: null },
+            "1165509496": { name: "عبدالعزيز بندر حمادي الحربي", mathScore: null, timssScore: null },
+            "1165639384": { name: "وسام حسن محمد عبيري", mathScore: null, timssScore: null },
+            "1165897610": { name: "عبدالرحمن سعيد بن ساعد الفايدي", mathScore: null, timssScore: null },
+            "1168397170": { name: "نايف حسين نايف العقبي", mathScore: null, timssScore: null },
+            "2361616085": { name: "نواف فيصل عبدالله بابصيل", mathScore: null, timssScore: null },
+            "2363148129": { name: "نواف حامد قاسم مثنى", mathScore: null, timssScore: null },
+            "2363719358": { name: "علي عبدالرحمن محمد سعي", mathScore: null, timssScore: null },
+            "2365349964": { name: "أنس امين محمد الذياني", mathScore: null, timssScore: null },
+            "2368345258": { name: "امير طارق ابراهيم النجار", mathScore: null, timssScore: null },
+            "2368995938": { name: "عمر عبدالله عبده السعودي", mathScore: null, timssScore: null },
+            "9683759295": { name: "البراء محمد علي احمد", mathScore: null, timssScore: null }
         };
 
         function playSound(type) {
@@ -293,26 +481,53 @@
 
             if (studentsData[idInput]) {
                 const student = studentsData[idInput];
-                const score = student.score;
+                let score = null;
+                let examName = "";
+
+                if (currentExam === 'math') {
+                    score = student.mathScore;
+                    examName = "اختبار الرياضيات (الفترة الأولى)";
+                } else {
+                    score = student.timssScore;
+                    examName = "اختبارات تيمز الدولية (TIMSS)";
+                }
+
+                if (score === null || score === undefined) {
+                    resultBox.style.display = "block";
+                    resultBox.className = "result-box pending";
+                    resultBox.innerHTML = `
+                        <h3>تفاصيل النتيجة</h3>
+                        <div class="info-row">
+                            <span>اسم الطالب:</span>
+                            <strong>${student.name}</strong>
+                        </div>
+                        <div class="info-row">
+                            <span>نوع الاختبار:</span>
+                            <strong>${examName}</strong>
+                        </div>
+
+                        <div class="grade-badge">
+                            لم يتم رصد الدرجات إلى الآن
+                        </div>
+                    `;
+                    return;
+                }
 
                 let feedbackClass = "";
                 let feedbackTitle = "";
                 let feedbackMessage = "";
 
-                if (score > 17) {
-                    feedbackClass = "excellent";
+                if (score > 14) {
                     feedbackTitle = "ممتاز! 🌟";
-                    feedbackMessage = "أبدعت وتألقت يا بطل! أداء استثنائي ينم عن فهم عميق لمادة الرياضيات. واصل هذا التميز والتألق فالقمة بانتظارك دائماً! 👏✨";
+                    feedbackMessage = "أبدعت وتألقت يا بطل! أداء استثنائي ينم عن فهم عميق. واصل هذا التميز والتألق دائماً! 👏✨";
                     playSound('applause');
-                } else if (score > 10) {
-                    feedbackClass = "good";
+                } else if (score > 9) {
                     feedbackTitle = "أحسنت! 👍";
-                    feedbackMessage = "أتوقع أنك تحقق درجة أحسن في الاختبارات القادمة! واصل الاجتهاد والتركيز وستصل إلى ما تحلم به. 💪🚀";
+                    feedbackMessage = "عمل رائع! واصل الاجتهاد والتركيز وستصل إلى أعلى المستويات. 💪🚀";
                     playSound('success');
                 } else { 
-                    feedbackClass = "encouraging";
                     feedbackTitle = "خطوة نحو النجاح! 💡";
-                    feedbackMessage = "لا تقلق يا بطل، البدايات دائمًا تكون فرصة للتعلم والتطور. أنت تمتلك القدرة على التحسن، ومع قليل من المتابعة والتدريب ستتألق في المرات القادمة! 🌟🌱";
+                    feedbackMessage = "لا تقلق يا بطل، البدايات دائمًا فرصة للتعلم والتطور. أنت تمتلك القدرة على التحسن في الاختبارات القادمة! 🌟🌱";
                     playSound('encouraging');
                 }
 
@@ -325,19 +540,15 @@
                         <strong>${student.name}</strong>
                     </div>
                     <div class="info-row">
-                        <span>المادة:</span>
-                        <strong>مادة الرياضيات</strong>
-                    </div>
-                    <div class="info-row">
-                        <span>الاختبار:</span>
-                        <strong>اختبار الفترة الأولى</strong>
+                        <span>نوع الاختبار:</span>
+                        <strong>${examName}</strong>
                     </div>
 
                     <div class="grade-badge">
-                        الدرجة: ${toArabicNumerals(score)} من ${toArabicNumerals(student.total)}
+                        الدرجة: ${toArabicNumerals(score)} من ٢٠
                     </div>
 
-                    <div class="feedback-box ${feedbackClass}">
+                    <div class="feedback-box">
                         <strong>${feedbackTitle}</strong><br>
                         ${feedbackMessage}
                     </div>
