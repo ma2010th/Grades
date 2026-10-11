@@ -53,7 +53,7 @@
         }
         .exam-btn {
             flex: 1;
-            padding: 16px 12px;
+            padding: 12px 10px;
             background: #f8fafc;
             border: 2.5px solid #cbd5e1;
             border-radius: 16px;
@@ -65,14 +65,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .exam-btn span.icon {
-            font-size: 1.8rem;
-            padding: 10px;
+            font-size: 1.2rem;
+            padding: 6px;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -80,33 +80,33 @@
         }
 
         #btnMath .icon {
-            background: rgba(212, 160, 23, 0.12);
-            color: #b8860b;
-        }
-        #btnMath.active {
-            background: linear-gradient(135deg, #fffcf0, #fef3c7);
-            border-color: #d97706;
-            color: #92400e;
-            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
-        }
-        #btnMath.active .icon {
-            background: #d97706;
-            color: #ffffff;
-            transform: scale(1.1);
-        }
-
-        #btnTimss .icon {
             background: rgba(13, 148, 136, 0.12);
             color: #0d9488;
         }
-        #btnTimss.active {
+        #btnMath.active {
             background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
             border-color: #0d9488;
             color: #115e59;
             box-shadow: 0 8px 20px rgba(13, 148, 136, 0.3);
         }
-        #btnTimss.active .icon {
+        #btnMath.active .icon {
             background: #0d9488;
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        #btnTimss .icon {
+            background: rgba(212, 160, 23, 0.12);
+            color: #b8860b;
+        }
+        #btnTimss.active {
+            background: linear-gradient(135deg, #fffcf0, #fef3c7);
+            border-color: #d97706;
+            color: #92400e;
+            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
+        }
+        #btnTimss.active .icon {
+            background: #d97706;
             color: #ffffff;
             transform: scale(1.1);
         }
@@ -129,11 +129,11 @@
         }
         
         .container.math-mode label {
-            color: #b45309;
+            color: #0d9488;
         }
         
         .container.timss-mode label {
-            color: #0d9488;
+            color: #b45309;
         }
 
         input[type="text"] {
@@ -173,23 +173,23 @@
         }
 
         .container.math-mode button.submit-btn {
-            background: linear-gradient(135deg, #d97706, #b45309);
-            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
-        }
-        .container.math-mode button.submit-btn:hover {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(217, 119, 6, 0.6);
-        }
-
-        .container.timss-mode button.submit-btn {
             background: linear-gradient(135deg, #0d9488, #115e59);
             box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
         }
-        .container.timss-mode button.submit-btn:hover {
+        .container.math-mode button.submit-btn:hover {
             background: linear-gradient(135deg, #14b8a6, #0d9488);
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(13, 148, 136, 0.6);
+        }
+
+        .container.timss-mode button.submit-btn {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+        }
+        .container.timss-mode button.submit-btn:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(217, 119, 6, 0.6);
         }
 
         button.submit-btn span.btn-icon {
@@ -270,16 +270,19 @@
         }
         .footer {
             margin-top: 35px;
-            font-size: 1rem;
-            color: #627d98;
+            font-size: 1.05rem;
+            color: #002f6c;
             text-align: center;
             border-top: 2.5px solid #e2e8f0;
             padding-top: 18px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px #ffcc00;
         }
         .footer span {
-            color: #002f6c;
+            color: #001a41;
             font-weight: 900;
-            font-size: 1.05rem;
+            font-size: 1.15rem;
+            text-shadow: 2px 2px 5px #ffcc00;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -309,7 +312,7 @@
         <div class="exam-selector">
             <button type="button" class="exam-btn active" id="btnMath" onclick="setExamType('math')">
                 <span class="icon">📐</span>
-                <span>اختبار الفترة الأولى</span>
+                <span>اختبار الفترة</span>
             </button>
             <button type="button" class="exam-btn" id="btnTimss" onclick="setExamType('timss')">
                 <span class="icon">🎯</span>
@@ -318,7 +321,7 @@
         </div>
 
         <div class="form-group">
-            <label for="nationalId" id="inputLabel">أدخل رقم الهوية لاختبار الفترة الأولى:</label>
+            <label for="nationalId" id="inputLabel">أدخل رقم الهوية لاختبار الفترة:</label>
             <input type="text" id="nationalId" placeholder="مثال: 1234567890" inputmode="numeric">
         </div>
         
@@ -330,8 +333,8 @@
         <div id="resultContainer" class="result-box"></div>
 
         <div class="footer">
-            إعداد وتنفيذ المعلم: <span>عبدالمحيي السلمي</span><br>
-            <span style="font-size: 0.8rem; color: #829ab1; font-weight: 400;">جميع الحقوق محفوظة © ٢٠٢٦</span>
+            <span>إعداد وتنفيذ المعلم: عبدالمحيي السلمي</span><br>
+            <span style="font-size: 0.85rem; font-weight: 700; text-shadow: 1px 1px 3px #ffcc00;">جميع الحقوق محفوظة © ٢٠٢٦</span>
         </div>
     </div>
 
@@ -351,7 +354,7 @@
             if (type === 'math') {
                 btnMath.classList.add('active');
                 btnTimss.classList.remove('active');
-                inputLabel.innerText = "أدخل رقم الهوية لاختبار الفترة الأولى:";
+                inputLabel.innerText = "أدخل رقم الهوية لاختبار الفترة:";
                 mainContainer.classList.remove('timss-mode');
                 mainContainer.classList.add('math-mode');
             } else {
@@ -397,9 +400,59 @@
             "1166159770": { name: "عمر احمد محمد السالمي", mathScore: 6, timssScore: null },
             "1166559342": { name: "يزن هتان عبدالواحد الرابغي", mathScore: 10, timssScore: null },
             "1165634203": { name: "محمد منير صالح الثبيتي", mathScore: 8, timssScore: null },
-            "2342791502": { name: "بدر ضيف الله الغامدي", mathScore: 9, timssScore: null },
+            "2342791502": { name: "سعد صالح باقادر", mathScore: 19, timssScore: null },
             "1167034295": { name: "عمر عبدالله عويضة الشيخ", mathScore: 7, timssScore: null },
-            "2365349964": { name: "فراس علي الغامدي", mathScore: 0, timssScore: null }
+            "2365349964": { name: "فراس علي الغامدي", mathScore: 0, timssScore: null },
+            "1164575357": { name: "عمر ايمن بالخيور", mathScore: 15, timssScore: null },
+            "2383821101": { name: "مرسال باسم برعى", mathScore: 20, timssScore: null },
+            "1164133462": { name: "عماد بن مرعى العمري", mathScore: 17, timssScore: null },
+            "1162236325": { name: "الوليد خالد الغامدي", mathScore: 14, timssScore: null },
+            "2369429960": { name: "سالم يسلم باخيضر", mathScore: 17, timssScore: null },
+            "2369119637": { name: "قصى محمود النعيزي", mathScore: 13, timssScore: null },
+            "2370723278": { name: "يوسف معمر على ادريس", mathScore: 17, timssScore: null },
+            "1163705435": { name: "مشاري احمد الغامدي", mathScore: 11, timssScore: null },
+            "1165861806": { name: "سلطان عبدالعزيز الحربي", mathScore: 13, timssScore: null },
+            "1172370080": { name: "عبدالله سعد القرني", mathScore: 5, timssScore: null },
+            "1163368523": { name: "عبدالله مسبل العمري", mathScore: 10, timssScore: null },
+            "1168127890": { name: "محمد عبدالرحيم العمري", mathScore: 13, timssScore: null },
+            "1162007825": { name: "محمد عبدالله الغامدي", mathScore: 12, timssScore: null },
+            "1163293408": { name: "زايد سعد المالكي", mathScore: 7, timssScore: null },
+            "1161478860": { name: "مراد فوزي الحارثي", mathScore: 7, timssScore: null },
+            "1161364300": { name: "يوسف مديح اليهيبي", mathScore: 8, timssScore: null },
+            "2342642200": { name: "مصطفى طيفور محمد", mathScore: 8, timssScore: null },
+            "1162877284": { name: "عبدالله مازن باحسن", mathScore: 6, timssScore: null },
+            "1427307713": { name: "العزيز عادل البيبي", mathScore: 5, timssScore: null },
+            "2372250742": { name: "عبدالله مصطفى محمد", mathScore: 4, timssScore: null },
+            "2359395429": { name: "سليم سعيد محمد", mathScore: 5, timssScore: null },
+            "1162002834": { name: "عبدالله بدر الرشيدي", mathScore: "لم ترصد", timssScore: null },
+            "2368995938": { name: "عمر عبدالله عبده السعودي", mathScore: 20, timssScore: null },
+            "2365349964": { name: "أنس امين محمد الذياني", mathScore: 18, timssScore: null },
+            "1165300219": { name: "حمزة ريان يوسف الخوتاني", mathScore: 16, timssScore: null },
+            "1168397170": { name: "نايف حسين نايف العقبي", mathScore: 17, timssScore: null },
+            "1165280411": { name: "صالح رايد امين كردي", mathScore: 15, timssScore: null },
+            "1164530014": { name: "مؤيد رياض سعيد الغامدي", mathScore: 14, timssScore: null },
+            "1161736473": { name: "محمد جاسم محمد المولد", mathScore: 15, timssScore: null },
+            "2368345258": { name: "امير طارق ابراهيم النجار", mathScore: 17, timssScore: null },
+            "1163844663": { name: "سيف رعد حمود الطويرقي", mathScore: 17, timssScore: null },
+            "1165639384": { name: "وسام حسن محمد عبيري", mathScore: 16, timssScore: null },
+            "1159662863": { name: "عبدالمحسن فهد سيف السريحي", mathScore: 10, timssScore: null },
+            "2363719358": { name: "علي عبدالرحمن سعيفتان", mathScore: 15, timssScore: null },
+            "1163368523": { name: "البراء محمد الجباري", mathScore: 10, timssScore: null },
+            "1165509496": { name: "عبدالعزيز بندر الحربي", mathScore: 12, timssScore: null },
+            "1165288687": { name: "مشاري سامي الجهني", mathScore: 11, timssScore: null },
+            "1164370452": { name: "ريان المالكي", mathScore: 14, timssScore: null },
+            "1163784802": { name: "مشاري محمد ال عبود", mathScore: 9, timssScore: null },
+            "2363148129": { name: "نواف حامد مثنى", mathScore: 13, timssScore: null },
+            "2361616085": { name: "نواف فيصل بابصيل", mathScore: 8, timssScore: null },
+            "1165492008": { name: "زياد مطرب الشمري", mathScore: 7, timssScore: null },
+            "1165270768": { name: "بدر سلطان العنزي", mathScore: 7, timssScore: null },
+            "1164234492": { name: "ريان علي المباركي", mathScore: 5, timssScore: null },
+            "1165897610": { name: "عبدالرحمن سعيد الفايدي", mathScore: 4, timssScore: null },
+            "1164543330": { name: "عمر خليل السيد", mathScore: 5, timssScore: null },
+            "1162945776": { name: "جواد محمد القرني", mathScore: 4, timssScore: null },
+            "1164505701": { name: "مشاري عايد المطيري", mathScore: 5, timssScore: null },
+            "1165192822": { name: "عمر علاء الفارسي", mathScore: "غائب", timssScore: null },
+            "1162007825": { name: "صالح عبدالله الشمراني", mathScore: 0, timssScore: null }
         };
 
         function playSound(type) {
@@ -503,6 +556,32 @@
 
                         <div class="grade-badge">
                             لم يتم رصد الدرجات إلى الآن
+                        </div>
+                    `;
+                    return;
+                }
+
+                if (score === "غائب") {
+                    resultBox.style.display = "block";
+                    resultBox.className = "result-box error";
+                    resultBox.innerHTML = `
+                        <h3>تفاصيل النتيجة</h3>
+                        <div class="info-row">
+                            <span>اسم الطالب:</span>
+                            <strong>${student.name}</strong>
+                        </div>
+                        <div class="info-row">
+                            <span>نوع الاختبار:</span>
+                            <strong>${examName}</strong>
+                        </div>
+
+                        <div class="grade-badge" style="color: #7f1d1d; background: #fee2e2; border-color: #fca5a5;">
+                            حالة الطالب: غائب عن الاختبار
+                        </div>
+
+                        <div class="feedback-box">
+                            <strong>عذراً يا بطل! ⚠️</strong><br>
+                            لم تقم بحضور هذا الاختبار. ننتظر تعويض ذلك في الاختبارات القادمة بمشيئة الله. 💪
                         </div>
                     `;
                     return;
